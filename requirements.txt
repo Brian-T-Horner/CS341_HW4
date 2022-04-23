@@ -36,3 +36,13 @@ Deletions and modifications are not required at this time.
 Please be aware that it will be beneficial to write your program in such
 a way that it maintains the alphabetical order of the list from the first
 member entered, one by one,until the last member is entered.
+
+// Calculating the ascii values of each character of a string inputted
+	cin.getline(inputLine, 80);
+		if (!cin.eof()) {
+			inputIndex = 0;
+			for (i = 0; i < strlen (inputLine); i++){
+				inputIndex += (int) inputLine[i];
+				}
+
+			hashIndex = inputIndex % MAX;

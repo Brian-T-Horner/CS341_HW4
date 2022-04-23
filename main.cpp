@@ -8,27 +8,48 @@
 #include <iostream>
 #include <string>
 // --- User Built Includes ---
-
 void nameSort(std::string &, std::string &);
-int stringComparion(std::string &, std::string &);
+int stringComparison(std::string &, std::string &);
+void stringSortTest(std::string [], int);
 
 
 int main() {
     std::string test1 = "testtt";
     std::string test2 = "testt";
-
+    std::string str[5] = {"Pear", "Apple", "Appe", "Abc", "Abe"};
+    int arraySize = 5;
+    stringSortTest(str, arraySize);
 //    int var = 05;
 //    std::cout << (char)var<<std::endl;
-    nameSort(test1, test2);
+//    nameSort(test1, test2);
 
     return 0;
 }
 
 
+void stringSortTest(std::string input [], int size){
+    // Bubble sort for strings -- Testing purposes only
+    for (int i=0; i<size; i++){
+        for (int j= i+1; j<size; j++){
+            if(input[i]> input[j]){
+                std::string temp = input[i];
+                input[i] = input[j];
+                input[j] = temp;
+            }
+        }
+    }
+    for (int i=0; i <size; i++){
+        std::cout <<input[i] <<std::endl;
+    }
+}
+
+
+
+
 
 void nameSort (std::string &firstString, std::string &secondString){
 // Function to sort the names in a linked list
-int bounds = stringComparion(firstString, secondString);
+int bounds = stringComparison(firstString, secondString);
 for (int i{0}; i < bounds; i++){
     if(tolower(firstString[i]) < tolower(secondString[i])){
         std::cout << firstString;
@@ -44,8 +65,7 @@ for (int i{0}; i < bounds; i++){
 }
 
 
-
-int stringComparion(std::string &firstString, std::string &secondString){
+int stringComparison(std::string &firstString, std::string &secondString){
 // Function to return bounds for comparing strings
     bool firstGreater = (firstString.length() >= secondString.length());
     if (firstGreater){
