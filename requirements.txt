@@ -1,0 +1,38 @@
+In a previous semester, one of our customers presented a request for a listing which
+contains a linked list of their customers in alphabetical order and they were
+disappointed when they received a stack list program of their customers.
+What they want is for the list to retain the names of their customers in
+alphabetical order.
+
+At this point, we are not to be concerned with the contents of the customers’
+information.
+
+For example, if they have the following list of names:
+
+Jones, Smith, Duggan and Alpha,
+
+they wish to have the list to be kept in alphabetic order:
+
+Alpha, Duggan, Jones, Smith.
+
+Also, when a fifth customer named Morris is added to the list,
+the list would display as follows:
+
+Alpha, Duggan, Jones, Morris, Smith.
+
+When a sixth customer, Wynn, is added the list would display:
+
+Alpha, Duggan, Jones, Morris, Smith, Wynn.
+
+When a seventh customer, Adams, is added the list would display:
+
+Adams, Alpha, Duggan, Jones, Morris, Smith, Wynn.
+
+These names and additional names are to be kept in alphabetical order
+in the list by customer name.
+
+Deletions and modifications are not required at this time.
+
+Please be aware that it will be beneficial to write your program in such
+a way that it maintains the alphabetical order of the list from the first
+member entered, one by one,until the last member is entered.
