@@ -3,4 +3,4 @@ project(HW4)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(HW4 main.cpp Node.cpp)
+add_executable(HW4 main.cpp Node.cpp LinkedList.cpp)

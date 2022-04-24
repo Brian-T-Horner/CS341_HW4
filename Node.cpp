@@ -19,6 +19,12 @@ Node::Node() {
     this-> previous = nullptr;
 }
 
+Node::Node(std::string& nameValue){
+    this->name = nameValue;
+    this->next = nullptr;
+    this->previous = nullptr;
+}
+
 Node::Node(std::string &value, Node* nextNode, Node* previousNode):name(value),
 next(nextNode), previous(previousNode){}
 

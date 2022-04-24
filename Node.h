@@ -18,6 +18,7 @@
 class Node {
 public:
     Node ();
+    Node(std::string&);
     Node(std::string&, Node*, Node*);
 
 
@@ -41,4 +42,4 @@ private:
 };
 
 
-#endif //HW4_NODE_H
+#endif
