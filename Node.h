@@ -3,6 +3,7 @@
 // Author: Brian Horner
 // Edit History:
 // 4/22/2022 - Initial Version
+// 4/23/2022 - Added Constructors, Gets & Sets
 
 #ifndef HW4_NODE_H
 #define HW4_NODE_H
@@ -16,7 +17,22 @@
 
 class Node {
 public:
-    Node (){}
+    Node ();
+    Node(std::string&, Node*, Node*);
+
+
+    // --- Pointer Changes ---
+
+    // Sets
+    void setNextPointer(Node*);
+    void setPreviousPointer(Node*);
+    void setName(std::string&);
+
+    // Gets
+    Node* getNextPointer();
+    Node* getPreviousPointer();
+    std::string getName();
+
 
 private:
     std::string name;
