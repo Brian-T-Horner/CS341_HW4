@@ -8,6 +8,9 @@
 #include <iostream>
 #include <string>
 // --- User Built Includes ---
+#include "Node.h"
+#include "LinkedList.h"
+
 void nameSort(std::string &, std::string &);
 int stringComparison(std::string &, std::string &);
 void stringSortTest(std::string [], int);
@@ -16,12 +19,17 @@ void stringSortTest(std::string [], int);
 int main() {
     std::string test1 = "testtt";
     std::string test2 = "testt";
-    std::string str[5] = {"Pear", "Apple", "Appe", "Abc", "Abe"};
-    int arraySize = 5;
-    stringSortTest(str, arraySize);
+//    std::string str[5] = {"Pear", "Apple", "Appe", "Abc", "Abe"};
+//    int arraySize = 5;
+//    stringSortTest(str, arraySize);
 //    int var = 05;
 //    std::cout << (char)var<<std::endl;
 //    nameSort(test1, test2);
+    LinkedList classList;
+    classList.addNode(test1);
+    classList.addNode(test2);
+    classList.printList();
+
 
     return 0;
 }

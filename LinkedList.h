@@ -18,15 +18,15 @@ class LinkedList {
 public:
     LinkedList();
 
-    void addNode(std::string);
+    void addNode(std::string&);
     void printList();
     Node* findName(std::string);
     void deleteNode (std::string);
 
 //    Node* findIndex(int); -- Maybe implement indexing? Overload operator
 
-    Node* getFirstName();
-    void setFirstName(Node*);
+    Node* getFirstNode();
+    void setFirstNode(Node*);
 
 private:
     Node* headNode;
