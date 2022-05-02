@@ -14,31 +14,18 @@
 // --- Constructors ---
 
 Node::Node() {
-    this->name = "";
-    this-> next = nullptr;
-    this-> previous = nullptr;
+    name = "";
+    next = nullptr;
+    previous = nullptr;
 }
 
-Node::Node(std::string& nameValue){
-    this->name = nameValue;
-    this->next = nullptr;
-    this->previous = nullptr;
-}
-
-Node::Node(std::string &value, Node* nextNode, Node* previousNode):name(value),
-next(nextNode), previous(previousNode){}
 
 // --- Set Functions ---
-
-void Node::setNextPointer(Node * nextNode) {this->next = nextNode;}
-
-void Node::setPreviousPointer(Node *previousNode) {this->previous =
-previousNode;}
-
-void Node::setName(std::string& nameValue) {this->name = nameValue;}
+void Node::setNextPointer(Node * nextNode) {next = nextNode;}
+void Node::setPreviousPointer(Node *previousNode) {previous =previousNode;}
+void Node::setName(std::string& nameValue) {name = nameValue;}
 
 // --- Get Functions ---
-
 Node *Node::getNextPointer() {return next;}
 Node *Node::getPreviousPointer() {return previous;}
 std::string Node::getName() {return name;}

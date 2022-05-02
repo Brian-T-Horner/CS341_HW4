@@ -4,6 +4,7 @@
 // Edit History:
 // 4/22/2022 - Initial Version
 
+
 // --- Standard Library Includes ---
 #include <iostream>
 #include <string>
@@ -17,19 +18,23 @@ void stringSortTest(std::string [], int);
 
 
 int main() {
-    std::string test1 = "testtt";
-    std::string test2 = "testt";
-//    std::string str[5] = {"Pear", "Apple", "Appe", "Abc", "Abe"};
-//    int arraySize = 5;
-//    stringSortTest(str, arraySize);
-//    int var = 05;
-//    std::cout << (char)var<<std::endl;
-//    nameSort(test1, test2);
-    LinkedList classList;
-    classList.addNode(test1);
-    classList.addNode(test2);
-    classList.printList();
+    LinkedList linkedList;
+    std::string name;
+    std::cout << "Enter the names you wish to have for your list." <<std::endl;
+    std::cout << "Enter your eof keybind for end of input." <<std::endl;
+    std::cout << "An updated list is entered after each entry." <<std::endl;
+    std::cout << "Entry: ";
+    while (!std::cin.eof()&&std::cin.good()){
+        std::cin>>name;
+        linkedList.sortList(name);
+        linkedList.printList();
+        std::cout << "\n\nContinue to enter the names you wish to have for "
+                     "your "
+                     "list."<<std::endl;
+        std::cout << "Enter your eof keybind for end of input." <<std::endl;
+        std::cout << "Entry: ";
 
+    }
 
     return 0;
 }

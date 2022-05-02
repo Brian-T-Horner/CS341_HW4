@@ -18,11 +18,8 @@
 class Node {
 public:
     Node ();
-    Node(std::string&);
-    Node(std::string&, Node*, Node*);
 
 
-    // --- Pointer Changes ---
 
     // Sets
     void setNextPointer(Node*);
@@ -37,8 +34,8 @@ public:
 
 private:
     std::string name;
-    Node* next;
-    Node* previous;
+    Node* next{nullptr};
+    Node* previous{nullptr};
 };
 
 

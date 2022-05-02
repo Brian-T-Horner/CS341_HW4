@@ -12,92 +12,94 @@
 #include "LinkedList.h"
 
 // --- Constructor ---
-LinkedList::LinkedList() {this->headNode= nullptr;}
+LinkedList::LinkedList() {headNode= nullptr; tailNode= nullptr;}
 
-
-void LinkedList::addNode(std::string &newName) {
-    std::cout << "Start addNode" <<std::endl;
-    Node temp;
-    temp.setName(newName);
-    Node* newNodePointer = &temp;
-    temp.setName(newName);
-    if (headNode == nullptr){
-        headNode = newNodePointer;
-    }else if (headNode->getName() > temp.getName()){
-        Node* temp = headNode;
-        // Setting new node to head node
-        headNode = newNodePointer;
-        // Setting head node (new node) next to previous head node
-        headNode->setNextPointer(temp);
-        // Setting temp(previous head node) previous ptr to head node (new node)
-        temp->setNextPointer(newNodePointer);
-
-    }else if (headNode->getName()< temp.getName()){
-        if(headNode->getNextPointer() == nullptr){
-
-            // Set head nodes next to new pointer
-            headNode->setNextPointer(newNodePointer);
-            // Set new node previous ptr to head node
-            newNodePointer->setPreviousPointer(headNode);
-
-        }else if(headNode->getNextPointer()!= nullptr){
-            Node* comparisonPtr = headNode->getNextPointer();
-
-            while (comparisonPtr->getName() < temp.getName()){
-                if(comparisonPtr->getNextPointer() != nullptr){
-                    comparisonPtr = comparisonPtr->getNextPointer();
-                }else{
-                    // Set comparisons next ptr to new
-                    comparisonPtr->setNextPointer(newNodePointer);
-
-                    // Set new nodes previous ptr to comparison
-                    temp.setPreviousPointer(comparisonPtr);
-                    break;
+void LinkedList::sortList(std::string &name) {
+    Node * newNode = new Node;
+    if(newNode != nullptr){
+        newNode->setName(name);
+        if(getHeadNode() == nullptr){
+            // If there is no node in linked list
+            setHeadNode(newNode);
+            setTailNode(newNode);
+        }else if (getHeadNode()!= nullptr){
+            // If there is a head node
+            if (headNode->getName() < newNode->getName()){
+                // If head node is less than new node
+                if(headNode == tailNode){
+                    // If there is only one node in the list
+                    headNode->setNextPointer(newNode);
+                    newNode->setPreviousPointer(headNode);
+                    setTailNode(newNode);
+                }else if (headNode != tailNode){
+                    // If there is more than one node in the list
+                    Node * comparison = headNode;
+                    // Sort through until temp node is less than comparison
+                    while (comparison->getNextPointer()!= nullptr &&
+                    comparison->getNextPointer()->getName() < newNode->getName
+                    ()){
+                        comparison = comparison->getNextPointer();
+                    }
+                    // Setting temp next node to comparison next node
+                    newNode->setNextPointer(comparison->getNextPointer());
+                    // setting comparison next to new node
+                    comparison->setNextPointer(newNode);
+                    // setting new node previous to comparison node
+                    newNode->setPreviousPointer(comparison);
                 }
-                Node* tempPtr = comparisonPtr;
-
-                // Set comparison's previous node's next pointer to new node
-                comparisonPtr->getPreviousPointer()->setNextPointer
-                (newNodePointer);
-
-                // Set comparisonPtr to new nodePtr
-                comparisonPtr = newNodePointer;
-
-                // Set new nodes previous pointer to temp(comparisons) previous
-                // pointer
-                newNodePointer->setPreviousPointer
-                (tempPtr->getPreviousPointer());
-
-               // Set new nodes next pointer to temp (comparison)
-               newNodePointer->setNextPointer(tempPtr);
-
-                //Set temp(comparison) previous ptr to new node
-                tempPtr->setPreviousPointer(newNodePointer);
-
-                // break out of loop
-                break;
+            }else if(headNode->getName() > newNode->getName()){
+            // If new node is less than head node
+            newNode->setNextPointer(headNode);
+            headNode->setPreviousPointer(newNode);
+                setHeadNode(newNode);
             }
+
         }
+    }else{
+        // Catch for if out of heap memory
+        std::cout << "Error: Out of heap memory for node objects." <<std::endl;
     }
 
-std::cout << "End addNode" <<std::endl;
+}
+void LinkedList::addNode(std::string &newName) {
+    Node * temp = new Node;
+    if(temp != nullptr){
+        temp->setName(newName);
+
+        if (getHeadNode() == nullptr){
+            setHeadNode(temp);
+            setTailNode(temp);
+        }else{
+            tailNode->setNextPointer(temp);
+            setTailNode(temp);
+        }
+    }
 }
 
 void LinkedList::printList() {
-    std::cout << "Start printList" <<std::endl;
-    Node* temp;
-    temp = headNode;
-    std::cout << "User Data: ";
-    std::cout << temp->getName();
-    while (temp->getNextPointer() != nullptr){
+    Node* temp = getHeadNode();
+    std::cout << "\nUser Data: " <<std::endl;
+    while(temp != nullptr){
+        std::cout << temp->getName()<<std::endl;
         temp = temp->getNextPointer();
-        std::cout << temp->getName();
     }
-    std::cout << "End print list" <<std::endl;
-//    delete temp; //TODO -- Check if this deletes the last node or just temp
+
 }
 
+// --- Get Methods ---
+Node* LinkedList::getHeadNode(){return headNode;}
+Node* LinkedList::getTailNode(){return tailNode;}
 
-// --- Get and Set for first node;
-Node* LinkedList::getFirstNode() {return headNode;}
-void LinkedList::setFirstNode(Node * newHeadNode) {this->headNode=newHeadNode;}
+// --- Set Methods ---
+void LinkedList::setHeadNode(Node* newHeadNode){
+    if(newHeadNode != nullptr){
+        this->headNode = newHeadNode;
+    }
+}
+void LinkedList::setTailNode(Node* newTailNode){
+    if(newTailNode != nullptr){
+        this->tailNode = newTailNode;
+    }
+}
+
+LinkedList::~LinkedList() {}

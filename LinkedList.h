@@ -16,20 +16,28 @@
 
 class LinkedList {
 public:
+    //--- Constructor ---
     LinkedList();
 
+    // --- General Methods ---
     void addNode(std::string&);
     void printList();
-    Node* findName(std::string);
-    void deleteNode (std::string);
+    void sortList(std::string&);
 
-//    Node* findIndex(int); -- Maybe implement indexing? Overload operator
 
-    Node* getFirstNode();
-    void setFirstNode(Node*);
+    // --- Get Methods ---
+    Node* getHeadNode();
+    Node* getTailNode();
+    // --- Set Methods ---
+    void setHeadNode(Node*);
+    void setTailNode(Node*);
+
+    // --- Destructor ---
+    ~LinkedList();
 
 private:
     Node* headNode;
+    Node* tailNode;
 };
 
 
